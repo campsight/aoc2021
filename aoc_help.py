@@ -9,6 +9,10 @@ def read_file(path: str) -> list:
         return [x.strip('\n') for x in lines]
 
 
+def bin_to_int(strbinlist):
+    return int('0b' + ''.join(strbinlist), 2)
+
+
 def extend_grid(grid, char):
     rows = len(grid) + 2
     cols = len(grid[0]) + 2

@@ -1,12 +1,7 @@
 from aoc_help import *
 lines = read_file('data/input-day3.txt')
 
-
-def bin_to_int(strbinlist):
-    return int('0b' + ''.join(strbinlist), 2)
-
-
-# part 1 2981 * 1114 = 3320834
+# part 1
 gammas = [0]*len(lines[0])
 nb_lines = len(lines)
 
