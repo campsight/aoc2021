@@ -33,7 +33,4 @@ class Board:
         return -1
 
     def get_sum_remaining(self, numbers):
-        rems = itertools.chain(*[[x for x in row if x not in numbers] for row in self.get_rows()])
-        if not rems:
-            return 0
-        return sum(rems)
+        return sum(itertools.chain(*[[x for x in row if x not in numbers] for row in self.get_rows()]))

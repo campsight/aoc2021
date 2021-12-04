@@ -42,5 +42,3 @@ for i in range(len(boards)):
 looser = boards[winning_nbs.index(max(winning_nbs))]
 loose_sum = looser.get_sum_remaining(numbers_to_draw[0:(max(winning_nbs)+1)])
 print(f"Part 2: {loose_sum} times {numbers_to_draw[max(winning_nbs)]} = {loose_sum*numbers_to_draw[max(winning_nbs)]}")
-
-
