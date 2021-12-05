@@ -9,7 +9,12 @@ def read_file(path: str) -> list:
         return [x.strip('\n') for x in lines]
 
 
-def bin_to_int(strbinlist):
+def bin_to_int(strbinlist: str) -> int:
+    """
+    Transforms a string like "0110011" to an integer (never negative)
+    :param strbinlist: the string to transform
+    :return: the int representation
+    """
     return int('0b' + ''.join(strbinlist), 2)
 
 
@@ -70,3 +75,27 @@ def grid_values(grid, value):
         for j in range(0, len(grid[0])):
             result += (grid[i][j] == value)
     return result
+
+
+def get_direction(c1, c2):
+    if c1 == c2:
+        return 0
+    if c1 < c2:
+        return 1
+    return -1
+
+
+def add_line(line: tuple, grid: list) -> None:
+    """
+    Adds a line to a grid by increasing every coördinate of the line in the grid with +1
+    :param line: ([x1][y1], [x2][y2]) coordinates of a lines
+    :param grid: [rows][columns] grid to fill/increase
+    :return: Nothing, operates on the grid (list) given
+    """
+    x1, y1 = line[0][0], line[0][1]
+    x2, y2 = line[1][0], line[1][1]
+    sx = get_direction(x1, x2)
+    sy = get_direction(y1, y2)
+    line_len = max(abs(x1-x2), abs(y1-y2))
+    for i in range(line_len+1):
+        grid[x1 + (i * sx)][y1 + (i * sy)] += 1
