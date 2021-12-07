@@ -1,5 +1,6 @@
 from aoc_help import *
 import timeit
+#import numpy as np
 
 lines = read_file('data/input-day6.txt')
 start_time = timeit.default_timer()
