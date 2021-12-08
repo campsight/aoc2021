@@ -1,3 +1,22 @@
+import requests
+import os
+
+
+# tribute goes to adrerfcsantos - https://gist.github.com/andrerfcsantos/3f75c30fa403787c49ed5e8b92beca9a
+def get_input(day, cookie="53616c7465645f5fa98268654866c7f7877aafa13e6e307434138e5235ee2902c9b79e64e44874c86d0b9f7c980e44da"):
+    path = f'data/input-day{day:02}.txt'
+    if not os.path.isfile(path):
+        headers = {'session': cookie}
+        url = f'https://adventofcode.com/2021/day/{day}/input'
+
+        session = requests.Session()
+        resp = session.get(url, cookies=headers)
+
+        in_file = open(path, 'w')
+        in_file.write(resp.text)
+        in_file.close()
+
+
 def read_file(path: str) -> list:
     """
     Reads a txt file and returns a list containing all lines of the file, stripped from newline characters
