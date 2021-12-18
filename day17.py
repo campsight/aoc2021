@@ -7,13 +7,11 @@ get_input(day)
 lines = read_file(f'data/input-day{day:02}t.txt')
 start_time = timeit.default_timer()
 
-# target area: x=137..171, y=-98..-73
+# target area: x=137..171, y=-98..-73  Nele: 119 176 -84 -141
 # TX = (20, 30)
 # TY = (-10, -5)
 TX = (137, 171)
 TY = (-98, -73)
-
-
 
 
 # part 1
