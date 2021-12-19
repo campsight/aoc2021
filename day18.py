@@ -88,49 +88,9 @@ data = [[int(c) if c.isdigit() else c for c in line] for line in lines]
 
 my_sum = data[0]
 for i in range(1, len(data)):
-    # if not a: return b
     my_sum = ['['] + my_sum + [','] + data[i] + [']']
-    # print(''.join([str(e) for e in my_sum]))
     my_sum = process_line(my_sum)
     # print(''.join([str(e) for e in my_sum]))
-    # print()
-
-
-def find_pair(line):
-    replace_list = []
-    i = 0
-    while i < (len(line)-3):
-        c = line[i]
-        if c not in (',', '[', ']'):
-            end1 = i
-            while line[end1].isdigit():
-                end1 += 1
-            if line[end1] == "," and line[end1+1].isdigit():
-                end2 = end1+1
-                while line[end2].isdigit():
-                    end2 += 1
-                n1 = int(line[i:end1])
-                n2 = int(line[(end1+1):end2])
-                # print(f"pair found at pos {i}: {n1}, {n2}")
-                magnitude = n1*3 + n2*2
-                replace_list += [(i-1, end2+1, str(magnitude))]
-                i = end2+1
-            else:
-                i = end1
-        else:
-            i += 1
-    prev = 0
-    new_string = ''
-    for i in range(len(replace_list)):
-        repl = replace_list[i]
-        new_string += line[prev:repl[0]]
-        new_string += repl[2]
-        prev = repl[1]
-    new_string += line[replace_list[-1][1]:len(line)]
-    # print(line)
-    # print(replace_list)
-    # print(new_string)
-    return new_string
 
 
 def calculate_magnitude(line):
