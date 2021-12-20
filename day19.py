@@ -5,7 +5,7 @@ from scanner import Scanner
 
 day = 19
 get_input(day)
-lines = read_file(f'data/input-day{day:02}.txt')
+lines = read_file(f'data/input-day{day:02}n.txt')
 start_time = timeit.default_timer()
 
 scanners = []
@@ -61,3 +61,6 @@ for i in range(len(scanners)):
 sol2 = maxdist
 part2_time = timeit.default_timer() - part1_time
 print(f"Solution part 2: {sol2} ({part2_time:.4f}s after part1)")
+
+for s in scanners:
+    print(f"Scanner {s.get_id()} has coords {s.get_trans_to_abs()}")
