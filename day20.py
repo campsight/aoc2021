@@ -6,7 +6,7 @@ import numpy as np
 
 day = 20
 get_input(day)
-lines = read_file(f'data/input-day{day:02}t.txt')
+lines = read_file(f'data/input-day{day:02}.txt')
 start_time = timeit.default_timer()
 
 CONV = [".", "#"]
@@ -19,12 +19,12 @@ for i in range(2, len(lines)):
 
 
 # part 1
-def calculate_pixel(r, c, cgrid):
+def calculate_pixel(r, c, cgrid, ext):
     result = []
     for dr in (-1, 0, 1):
         for dc in (-1, 0, 1):
-            if r == 0 or c == 0 or r == len(cgrid) or c == len(cgrid[0]):
-                result += [0]
+            if r == 0 or c == 0 or r == (len(cgrid)-1) or c == (len(cgrid[0])-1):
+                result += [ext]
             else:
                 result += [cgrid[r+dr][c+dc]]
     result_str = [str(x) for x in result]
@@ -36,12 +36,11 @@ def enhance_image(grid, ext):
     # print(f"grid of size {len(grid)} * {len(grid[0])}")
     egrid = extend_grid(grid, ext)
     egrid = extend_grid(egrid, ext)
-    egrid = extend_grid(egrid, ext)
     result = copy.deepcopy(egrid)
-    for r in range(1, len(egrid) - 1):
-        for c in range(1, len(egrid[0]) - 1):
-            result[r][c] = calculate_pixel(r, c, egrid)
-    return get_subgrid(result), 1-ext
+    for r in range(len(egrid)):
+        for c in range(len(egrid[0])):
+            result[r][c] = calculate_pixel(r, c, egrid, ext)
+    return result, 1-ext
 
 
 my_grid = copy.deepcopy(grid)
