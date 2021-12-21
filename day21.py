@@ -51,9 +51,6 @@ quantum_sums = defaultdict(int)
 for subset in product(quantum_dice, repeat=3):
     quantum_sums[sum(subset)] += 1
 
-p1_wins, p2_wins = 0, 0
-all_sets = {(P1, 0, P2, 0): 1}
-
 
 def run_quantum_turn(game_state, p1_wins, p2_wins):
     p1, s1, p2, s2 = game_state
@@ -82,6 +79,8 @@ def merge_defaultdicts(d1, d2):
     return d1
 
 
+p1_wins, p2_wins = 0, 0
+all_sets = {(P1, 0, P2, 0): 1}
 while all_sets:
     next_set = defaultdict(int)
     for el, nb in all_sets.items():
