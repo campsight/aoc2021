@@ -1,4 +1,3 @@
-
 from aoc_help import *
 import timeit
 
